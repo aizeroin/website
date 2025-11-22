@@ -1,5 +1,5 @@
 import React from "react";
-import "./index.css"; // Add your custom styles if needed
+
 
 const approachSteps = [
   {
@@ -22,23 +22,37 @@ const approachSteps = [
 
 function Timeline() {
   return (
-    <section className="py-2 px-3 bg-white">
-      <div className="container">
-        <h2 className="fs-1 fw-600 p-0 pt-2 m-0 mb-2 text-center">Our Approach</h2>
-        <p className="opacity-75 w-75 w-sm-100 mx-auto text-center">
+    <section className="py-12 px-4 bg-white">
+      <div className="container mx-auto">
+        <h2 className="text-4xl font-semibold text-center mb-4 text-primary">Our Approach</h2>
+        <p className="text-gray-500 text-lg text-center max-w-2xl mx-auto mb-16">
           A strategic and transparent approach to help your business grow with powerful AI solutions.
         </p>
 
-        <div className="timeline position-relative">
-          {approachSteps.map((step, index) => (
-            <div className={`timeline-item ${index % 2 === 0 ? "left" : "right"}`} key={index}>
-              <div className="timeline-box shadow-sm p-3 text-center rounded bg-light timeline-card card">
-                <h5 className="fw-semibold">{step.title}</h5>
-                <p className="mb-0 text-muted small">{step.description}</p>
+        <div className="relative max-w-4xl mx-auto">
+          {/* Vertical Line */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gray-200 hidden md:block"></div>
+
+          <div className="space-y-12">
+            {approachSteps.map((step, index) => (
+              <div key={index} className={`flex flex-col md:flex-row items-center ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
+
+                {/* Content Side */}
+                <div className="w-full md:w-1/2 px-6">
+                  <div className={`bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-100 text-center md:text-left hover:shadow-md transition-shadow ${index % 2 === 0 ? 'md:text-right' : ''}`}>
+                    <h5 className="text-xl font-bold text-primary mb-2">{step.title}</h5>
+                    <p className="text-gray-600 text-sm leading-relaxed">{step.description}</p>
+                  </div>
+                </div>
+
+                {/* Dot */}
+                <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-accent rounded-full border-4 border-white shadow-sm hidden md:block"></div>
+
+                {/* Empty Side for spacing */}
+                <div className="w-full md:w-1/2"></div>
               </div>
-            </div>
-          ))}
-          <div className="timeline-line"></div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

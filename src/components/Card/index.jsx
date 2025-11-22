@@ -1,36 +1,42 @@
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+import React from 'react';
+import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import { FaArrowRight } from "react-icons/fa";
 
-function BasicExample({CardImg, CardText, slug, CardTitle, showButton=false}) {
+function Card({ CardImg, CardTitle, CardText, slug }) {
   const navigate = useNavigate();
 
-  const handleClick = () => {
-    navigate(`/services/${slug}`);
-  };
   return (
-    <Card style={{ width: '20rem' }}>
-      <Card.Img variant="top" src={CardImg} />
-      <Card.Body>
-        <Card.Title>{CardTitle}</Card.Title>
-        <Card.Text>
+    <motion.div
+      whileHover={{ y: -10 }}
+      className="bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col h-full group"
+    >
+      <div className="relative overflow-hidden h-48">
+        <div className="absolute inset-0 bg-primary/10 group-hover:bg-primary/0 transition-colors z-10"></div>
+        <img
+          src={CardImg}
+          alt={CardTitle}
+          className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+        />
+      </div>
+
+      <div className="p-6 flex flex-col grow">
+        <h5 className="text-xl font-bold text-primary mb-3 group-hover:text-accent transition-colors">
+          {CardTitle}
+        </h5>
+        <p className="text-gray-600 text-sm leading-relaxed mb-6 grow line-clamp-3">
           {CardText}
-        </Card.Text>
-        
-      
-      {!showButton ?
-      <button
-      type="button"
-      style={{ backgroundColor: '#f57c00', color: 'white' }}
-      className="btn btn-sm px-3 py-2 me-md-2 fs-7"
-      onClick={handleClick} 
-  >
-      Learn More
-  </button>:
-  ""}
-      </Card.Body>
-    </Card>
+        </p>
+
+        <button
+          onClick={() => navigate(`/services/servicePages/${slug}`)}
+          className="flex items-center gap-2 text-primary font-semibold text-sm group-hover:text-accent transition-colors mt-auto"
+        >
+          Learn More <FaArrowRight size={12} />
+        </button>
+      </div>
+    </motion.div>
   );
 }
 
-export default BasicExample;
+export default Card;

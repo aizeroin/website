@@ -1,88 +1,191 @@
-import { useLocation, Link } from 'react-router-dom';
-import {
-  Navbar,
-  Nav,
-  Container,
-  NavDropdown,
-  Image,
-} from 'react-bootstrap';
-import { useState } from 'react'; // Add this import
-import AILogo from '../../assets/aiz1.png';
-import './index.css';
+import React, { useState, useEffect } from 'react';
+import { NavLink, useNavigate, useLocation } from 'react-router-dom';
+import logo from '../../assets/aiz1.png';
+import { HiMenuAlt3, HiX } from "react-icons/hi";
+import { IoChevronDown } from "react-icons/io5";
 
 const Header = () => {
+  const [scrolled, setScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const navigate = useNavigate();
   const location = useLocation();
-  // Add state to track navbar expansion
-  const [expanded, setExpanded] = useState(false);
 
-  const isActive = (path) => location.pathname === path;
-  
-  // Function to close navbar on link click
-  const closeNavbar = () => setExpanded(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navLinks = [
+    { name: 'Home', path: '/' },
+    { name: 'About Us', path: '/about' },
+    {
+      name: 'Services',
+      path: '/services',
+      dropdown: [
+        { name: 'Technology Advisory', slug: 'technology-advisory' },
+        { name: 'Cloud Consulting', slug: 'cloud-consulting-and-migration' },
+        { name: 'Infrastructure Mgmt', slug: 'infrastructure-management' },
+        { name: 'Digital Modernization', slug: 'digital-modernization' },
+        { name: 'Managed IT Services', slug: 'managed-it-services' },
+        { name: 'AI Automation', slug: 'ai-automation' },
+      ]
+    },
+  ];
+
+  // Dynamic classes based on scroll state
+  const headerClass = `fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md py-2' : 'bg-white py-4'
+    }`;
+
+  const textColorClass = scrolled ? 'text-gray-800 hover:text-primary' : 'text-gray-800 hover:text-primary';
+  const activeLinkClass = scrolled ? 'text-primary font-semibold' : 'text-primary font-semibold';
 
   return (
-    <Navbar expand="lg" sticky="top" className='Header' expanded={expanded} onToggle={setExpanded}>
-      <Container className="px-4">
-        <Navbar.Brand as={Link} to="/" onClick={closeNavbar}>
-          <Image src={AILogo} width={180} alt="AIZero Logo" />
-        </Navbar.Brand>
-        
-        <Navbar.Toggle aria-controls="navbarNavDropdown" />
-        
-        <Navbar.Collapse id="navbarNavDropdown">
-          <Nav className="ms-auto align-items-left">
-            <Nav.Link as={Link} to="/" className={isActive('/') ? 'active' : ''} onClick={closeNavbar}>
-              Home
-            </Nav.Link>
-            {/* Services Dropdown with Main Link */}
-            <div className="d-flex nav-item">
-              <Nav.Link
-                as={Link}
-                to="/services"
-                className={`nav-link pe-0 ${isActive('/services') ? 'active' : ''}`}
-                onClick={closeNavbar}
-              >
-                Services
-              </Nav.Link>
-              <NavDropdown
-                title={<span className="dropdown-toggle-icon" />}
-                id="navbarDropdown"
-                className="dropdown-toggle-split p-0"
-                align="end"
-              >
-                <NavDropdown.Item as={Link} to="/services/technology-advisory" active={isActive('/services/technology-advisory')} onClick={closeNavbar}>
-                  Technology Advisory
-                </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/services/cloud-consulting-and-migration" active={isActive('/services/cloud-consulting-and-migration')} onClick={closeNavbar}>
-                  Cloud Consulting and Migration
-                </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/services/infrastructure-management" active={isActive('/services/infrastructure-management')} onClick={closeNavbar}>
-                  Infrastructure Management
-                </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/services/digital-modernization" active={isActive('/services/digital-modernization')} onClick={closeNavbar}>
-                  Digital Modernization
-                </NavDropdown.Item>
-              
-                <NavDropdown.Item as={Link} to="/services/managed-it-services" active={isActive('/services/managed-it-services')} onClick={closeNavbar}>
-                  Managed IT Services
-                </NavDropdown.Item>
-                
-                <NavDropdown.Item as={Link} to="/services/ai-automation" active={isActive('/services/cloud-consulting-and-migration')} onClick={closeNavbar}>
-                  Ai Automation
-                </NavDropdown.Item>
-              </NavDropdown>
-            </div>
-            
-            <Nav.Link as={Link} to="/about" className={isActive('/about') ? 'active' : ''} onClick={closeNavbar}>
-              About
-            </Nav.Link>
-            <Nav.Link as={Link} to="/contact" className={isActive('/contact') ? 'active' : ''} onClick={closeNavbar}>
-              Contact
-            </Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <header className={headerClass}>
+      <div className="container mx-auto px-4">
+        <div className="flex justify-between items-center">
+          {/* Logo */}
+          <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
+            <img src={logo} alt="AIZero Logo" className="h-[50px] md:h-[60px] w-auto" />
+          </div>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <div key={link.name} className="relative group">
+                {link.dropdown ? (
+                  <div
+                    className={`flex items-center gap-1 cursor-pointer ${location.pathname.startsWith(link.path) ? activeLinkClass : textColorClass} transition-colors text-lg`}
+                    onMouseEnter={() => setDropdownOpen(true)}
+                    onMouseLeave={() => setDropdownOpen(false)}
+                  >
+                    <span onClick={() => navigate(link.path)}>{link.name}</span>
+                    <IoChevronDown size={16} className={`transition-transform duration-300 ${dropdownOpen ? 'rotate-180' : ''}`} />
+
+                    {/* Dropdown Menu */}
+                    <div className={`absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden transition-all duration-300 origin-top-left ${dropdownOpen ? 'opacity-100 scale-100 visible' : 'opacity-0 scale-95 invisible'}`}>
+                      {link.dropdown.map((item) => (
+                        <div
+                          key={item.slug}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            navigate(`/services/servicePages/${item.slug}`);
+                            setDropdownOpen(false);
+                          }}
+                          className="px-6 py-3 text-gray-700 hover:bg-blue-50 hover:text-primary cursor-pointer transition-colors text-base border-b border-gray-50 last:border-none"
+                        >
+                          {item.name}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <NavLink
+                    to={link.path}
+                    className={({ isActive }) =>
+                      `text-lg transition-colors ${isActive ? activeLinkClass : textColorClass}`
+                    }
+                  >
+                    {link.name}
+                  </NavLink>
+                )}
+              </div>
+            ))}
+          </nav>
+
+          {/* Contact Button (Desktop) */}
+          <div className="hidden md:block">
+            <button
+              onClick={() => navigate('/contact')}
+              className={`px-6 py-2.5 rounded-full font-medium transition-all shadow-lg hover:shadow-xl shine-effect ${scrolled
+                ? 'bg-accent text-white hover:bg-accent-50 '
+                : 'bg-white text-primary hover:bg-gray-100'
+                }`}
+            >
+              Contact Us
+            </button>
+          </div>
+
+          {/* Mobile Menu Toggle */}
+          <div className="md:hidden">
+            <button onClick={() => setIsOpen(!isOpen)} className={scrolled ? 'text-gray-800' : 'text-white'}>
+              {isOpen ? <HiX size={30} /> : <HiMenuAlt3 size={30} />}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      <div className={`fixed inset-0  bg-black/50 backdrop-blur-sm z-40 md:hidden transition-opacity duration-300 ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`} onClick={() => setIsOpen(false)} />
+
+      {/* Mobile Menu Sidebar */}
+      <div className={`fixed top-0 right-0 h-full w-[80%] max-w-sm bg-white shadow-2xl z-50 transform transition-transform duration-300 ease-out ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+        <div className="p-6 flex flex-col h-full">
+          <div className="flex justify-between items-center mb-8">
+            <img src={logo} alt="AIZero Logo" className="h-8 w-auto" />
+            <button onClick={() => setIsOpen(false)} className="text-gray-500 hover:text-primary">
+              <HiX size={28} />
+            </button>
+          </div>
+
+          <div className="flex flex-col gap-6 overflow-y-auto">
+            {navLinks.map((link) => (
+              <div key={link.name}>
+                {link.dropdown ? (
+                  <div className="space-y-3">
+                    <div
+                      className="flex justify-between items-center text-xl font-semibold text-gray-800"
+                      onClick={() => setDropdownOpen(!dropdownOpen)}
+                    >
+                      {link.name}
+                      <IoChevronDown className={`transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
+                    </div>
+                    {dropdownOpen && (
+                      <div className="pl-4 flex flex-col gap-3 border-l-2 border-blue-100 ml-2">
+                        {link.dropdown.map((item) => (
+                          <div
+                            key={item.slug}
+                            onClick={() => {
+                              navigate(`/services/servicePages/${item.slug}`);
+                              setIsOpen(false);
+                            }}
+                            className="text-gray-600 hover:text-primary py-1"
+                          >
+                            {item.name}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <NavLink
+                    to={link.path}
+                    onClick={() => setIsOpen(false)}
+                    className={({ isActive }) =>
+                      `text-xl font-semibold block ${isActive ? 'text-primary' : 'text-gray-800'}`
+                    }
+                  >
+                    {link.name}
+                  </NavLink>
+                )}
+              </div>
+            ))}
+            <button
+              onClick={() => {
+                navigate('/contact');
+                setIsOpen(false);
+              }}
+              className="mt-4 w-full py-3 bg-accent text-white rounded-xl font-semibold shadow-lg"
+            >
+              Contact Us
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
   );
 };
 

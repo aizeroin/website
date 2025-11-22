@@ -1,69 +1,53 @@
-import Experience from '../../assets/Experience.png';
-import Assurance from '../../assets/Assurance.png';
-import Satisfied from '../../assets/Satisfied.png';
-import Completed from '../../assets/Completed.png';
+import React, { useEffect, useState } from "react";
+import { motion, animate } from "framer-motion";
 
-const statsData = [
-  {
-    img: Experience,
-    alt: '+ YEARS',
-    value: "100",
-    label: 'Authenticity',
-    suffix: '% Transparent',
-  },
-  {
-    img: Assurance,
-    alt: '% QUALITY',
-    value: 100,
-    label: 'Assurance',
-    suffix: '% QUALITY',
-  },
-  {
-    img: Satisfied,
-    alt: '% CLIENT',
-    value: 100,
-    label: 'Satisfaction',
-    suffix: '% CLIENT',
-  },
-  {
-    img: Completed,
-    alt: 'Innovation',
-    value: 100,
-    label: 'Unique Solutions',
-    suffix: '% Innovative',
-  },
-];
+const Counter = ({ from, to, duration }) => {
+  const [count, setCount] = useState(from);
 
-const StatsSection = () => {
+  useEffect(() => {
+    const controls = animate(from, to, {
+      duration: duration,
+      onUpdate: (value) => setCount(Math.floor(value)),
+    });
+    return () => controls.stop();
+  }, [from, to, duration]);
+
+  return <span>{count}+</span>;
+};
+
+const Stats = () => {
+  const statsData = [
+    { label: "Happy Clients", value: 232 },
+    { label: "Projects", value: 521 },
+    { label: "Hours Of Support", value: 1453 },
+    { label: "Hard Workers", value: 32 },
+  ];
+
   return (
-    <div className="bg-white py-0 py-sm-5">
-      <div className="container-fluid px-5">
-        <div className="row align-items-center justify-content-around pt-4 pb-0 py-0 pb-sm-0">
-          {statsData.map((item, index) => (
-            <div key={index} className="col-sm-6 col-lg-6 col-xl-3 mb-4 col-12">
-              <div className="row mb-5 mb-sm-0 mx-auto">
-                <div className="col-3">
-                  <img
-                    src={item.img}
-                    alt={item.alt}
-                    width="70"
-                    height="70"
-                    className="img-fluid"
-                  />
-                </div>
-                <div className="col">
-                  <h2 className="fs-4 fw-semibold text-primary p-0 m-0 pb-1 text-start">
-                    <span className="counter">{item.value}</span> {item.suffix}
-                  </h2>
-                  <span className="fs-5">{item.label}</span>
-                </div>
-              </div>
-            </div>
+    <section className="py-16 bg-white">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          {statsData.map((stat, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
+              className="text-center"
+            >
+              <h3 className="text-4xl md:text-5xl font-bold text-primary mb-2">
+                <Counter from={0} to={stat.value} duration={2} />
+              </h3>
+              <p className="text-gray-600 font-medium text-sm uppercase tracking-wider">
+                {stat.label}
+              </p>
+            </motion.div>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
-export default StatsSection;
+export default Stats;
