@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from 'react';
+import { api } from '../services/api';
 import { useNavigate } from 'react-router-dom';
 
 const AuthContext = createContext(null);
@@ -9,8 +10,7 @@ export const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
-    // Use relative path to leverage Vite proxy
-    const API_URL = '/api';
+
 
     useEffect(() => {
         // Check if token exists and is valid (optional: verify with backend)
@@ -24,28 +24,7 @@ export const AuthProvider = ({ children }) => {
 
     const login = async (username, password) => {
         try {
-            const response = await fetch(`${API_URL}/Auth/login`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ username, password }),
-            });
-
-            if (!response.ok) {
-                throw new Error('Login failed');
-            }
-
-            // The API returns the token directly as a string or in a JSON object?
-            // Based on Swagger, it returns 200 OK. Let's assume it returns the token text or json.
-            // Let's check the response type.
-            const contentType = response.headers.get("content-type");
-            let data;
-            if (contentType && contentType.indexOf("application/json") !== -1) {
-                data = await response.json();
-            } else {
-                data = await response.text();
-            }
+            const data = await api.login({ username, password });
 
             // Assuming the response is the token or contains the token.
             // If it's a simple string token:

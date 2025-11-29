@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { api } from '../../services/api';
 import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import logo from '../../assets/aiz1.png';
 import { HiMenuAlt3, HiX } from "react-icons/hi";
@@ -24,11 +25,8 @@ const Header = () => {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const response = await fetch('/api/Service');
-        if (response.ok) {
-          const data = await response.json();
-          setServices(data.sort((a, b) => a.displayOrder - b.displayOrder));
-        }
+        const data = await api.getServices();
+        setServices(data.sort((a, b) => a.displayOrder - b.displayOrder));
       } catch (error) {
         console.error("Failed to fetch services", error);
       } finally {

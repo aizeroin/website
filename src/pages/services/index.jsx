@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { api } from '../../services/api';
 import Card from "../../components/Card";
 import Hero from "../../components/Hero";
 import Applications from "../../assets/s1.jpg";
@@ -14,11 +15,7 @@ function Services() {
     useEffect(() => {
         const fetchServices = async () => {
             try {
-                const response = await fetch('/api/Service');
-                if (!response.ok) {
-                    throw new Error('Failed to fetch services');
-                }
-                const data = await response.json();
+                const data = await api.getServices();
                 setServices(data.sort((a, b) => a.displayOrder - b.displayOrder));
             } catch (err) {
                 setError(err.message);

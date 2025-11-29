@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { api } from '../../services/api';
 import { FaFacebookSquare, FaInstagramSquare, FaLinkedin, FaTwitterSquare } from 'react-icons/fa';
 import { useNavigate, Link } from 'react-router-dom';
 
@@ -9,11 +10,8 @@ const Footer = ({ hidebutto = false }) => {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const response = await fetch('/api/Service');
-        if (response.ok) {
-          const data = await response.json();
-          setServices(data.sort((a, b) => a.displayOrder - b.displayOrder));
-        }
+        const data = await api.getServices();
+        setServices(data.sort((a, b) => a.displayOrder - b.displayOrder));
       } catch (error) {
         console.error("Failed to fetch services", error);
       }

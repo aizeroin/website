@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { api } from '../../../services/api';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../../context/AuthContext';
 
@@ -14,9 +15,7 @@ const ServiceList = () => {
 
     const fetchServices = async () => {
         try {
-            const response = await fetch('/api/Service');
-            if (!response.ok) throw new Error('Failed to fetch services');
-            const data = await response.json();
+            const data = await api.getServices();
             setServices(data);
         } catch (err) {
             setError(err.message);
@@ -29,14 +28,7 @@ const ServiceList = () => {
         if (!window.confirm('Are you sure you want to delete this service?')) return;
 
         try {
-            const response = await fetch(`/api/Service/${id}`, {
-                method: 'DELETE',
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            });
-
-            if (!response.ok) throw new Error('Failed to delete service');
+            await api.deleteService(id, token);
 
             // Remove from list
             setServices(services.filter(s => s.id !== id));

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { api } from '../../../services/api';
 import { useNavigate, useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaCheckCircle, FaArrowRight } from 'react-icons/fa';
@@ -14,9 +15,7 @@ function ServiceDetail() {
   useEffect(() => {
     const fetchService = async () => {
       try {
-        const response = await fetch(`/api/Service/${id}`);
-        if (!response.ok) throw new Error('Service not found');
-        const data = await response.json();
+        const data = await api.getServiceById(id);
         setService(data);
       } catch (err) {
         setError(err.message);

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { api } from '../../../services/api';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useAuth } from '../../../context/AuthContext';
 
@@ -26,9 +27,7 @@ const ServiceForm = () => {
 
     const fetchService = async () => {
         try {
-            const response = await fetch(`/api/Service/${id}`);
-            if (!response.ok) throw new Error('Failed to fetch service details');
-            const data = await response.json();
+            const data = await api.getServiceById(id);
             setFormData({
                 title: data.title || '',
                 shortDescription: data.shortDescription || '',
@@ -56,21 +55,10 @@ const ServiceForm = () => {
         setError('');
 
         try {
-            const url = isEditMode ? `/api/Service/${id}` : '/api/Service';
-            const method = isEditMode ? 'PUT' : 'POST';
-
-            const response = await fetch(url, {
-                method,
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify(isEditMode ? { ...formData, id: parseInt(id) } : formData)
-            });
-
-            if (!response.ok) {
-                const errData = await response.text();
-                throw new Error(errData || 'Failed to save service');
+            if (isEditMode) {
+                await api.updateService(id, { ...formData, id: parseInt(id) }, token);
+            } else {
+                await api.createService(formData, token);
             }
 
             navigate('/admin/services');
