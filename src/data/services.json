@@ -10,7 +10,7 @@
                     "id": 101,
                     "title": "What We Do",
                     "displayOrder": 1,
-                    "image": "./images/ServiceDetails.jpg",
+                    "image": "/images/ServiceDetails.jpg",
                     "items": [
                         {
                             "type": "0",
@@ -38,7 +38,7 @@
                     "id": 102,
                     "title": "Cloud Modernization Services",
                     "displayOrder": 2,
-                    "image": "./images/ServiceDetails.jpg",
+                    "image": "/images/ServiceDetails.jpg",
                     "items": [
                         {
                             "type": "0",
@@ -81,7 +81,7 @@
                     "id": 103,
                     "title": "Why Choose Us",
                     "displayOrder": 3,
-                    "image": "./images/ServiceDetails.jpg",
+                    "image": "/images/ServiceDetails.jpg",
                     "items": [
                         {
                             "type": "0",
@@ -112,7 +112,7 @@
                     "id": 104,
                     "title": "Industries We Serve",
                     "displayOrder": 4,
-                    "image": "./images/ServiceDetails.jpg",
+                    "image": "/images/ServiceDetails.jpg",
                     "items": [
                         {
                             "type": "0",
@@ -175,7 +175,7 @@
                     "id": 201,
                     "title": "What We Do",
                     "displayOrder": 1,
-                    "image": "./images/ServiceDetails.jpg",
+                    "image": "/images/ServiceDetails.jpg",
                     "items": [
                         {
                             "type": "0",
@@ -208,7 +208,7 @@
                     "id": 202,
                     "title": "Our Approach",
                     "displayOrder": 2,
-                    "image": "./images/ServiceDetails.jpg",
+                    "image": "/images/ServiceDetails.jpg",
                     "items": [
                         {
                             "type": "0",
@@ -241,7 +241,7 @@
                     "id": 203,
                     "title": "Technology Stack",
                     "displayOrder": 3,
-                    "image": "./images/ServiceDetails.jpg",
+                    "image": "/images/ServiceDetails.jpg",
                     "items": [
                         {
                             "type": "0",
@@ -274,7 +274,7 @@
                     "id": 204,
                     "title": "Why Choose Us",
                     "displayOrder": 4,
-                    "image": "./images/ServiceDetails.jpg",
+                    "image": "/images/ServiceDetails.jpg",
                     "items": [
                         {
                             "type": "0",
@@ -299,7 +299,7 @@
                     "id": 205,
                     "title": "Industries We Serve",
                     "displayOrder": 5,
-                    "image": "./images/ServiceDetails.jpg",
+                    "image": "/images/ServiceDetails.jpg",
                     "items": [
                         {
                             "type": "0",
@@ -362,7 +362,7 @@
                     "id": 301,
                     "title": "What We Do",
                     "displayOrder": 1,
-                    "image": "./images/ServiceDetails.jpg",
+                    "image": "/images/ServiceDetails.jpg",
                     "items": [
                         {
                             "type": "0",
@@ -400,7 +400,7 @@
                     "id": 302,
                     "title": "Business Benefits",
                     "displayOrder": 2,
-                    "image": "./images/ServiceDetails.jpg",
+                    "image": "/images/ServiceDetails.jpg",
                     "items": [
                         {
                             "type": "0",
@@ -431,7 +431,7 @@
                     "id": 303,
                     "title": "Our Approach",
                     "displayOrder": 3,
-                    "image": "./images/ServiceDetails.jpg",
+                    "image": "/images/ServiceDetails.jpg",
                     "items": [
                         {
                             "type": "0",
@@ -462,7 +462,7 @@
                     "id": 304,
                     "title": "Why Financial Institutions Choose Us",
                     "displayOrder": 4,
-                    "image": "./images/ServiceDetails.jpg",
+                    "image": "/images/ServiceDetails.jpg",
                     "items": [
                         {
                             "type": "0",
@@ -495,7 +495,7 @@
                     "id": 305,
                     "title": "Technology Stack",
                     "displayOrder": 5,
-                    "image": "./images/ServiceDetails.jpg",
+                    "image": "/images/ServiceDetails.jpg",
                     "items": [
                         {
                             "type": "0",
@@ -538,7 +538,7 @@
                     "id": 306,
                     "title": "Industries We Serve",
                     "displayOrder": 6,
-                    "image": "./images/ServiceDetails.jpg",
+                    "image": "/images/ServiceDetails.jpg",
                     "items": [
                         {
                             "type": "0",
@@ -601,7 +601,7 @@
                     "id": 401,
                     "title": "What We Do",
                     "displayOrder": 1,
-                    "image": "./images/ServiceDetails.jpg",
+                    "image": "/images/ServiceDetails.jpg",
                     "items": [
                         {
                             "type": "0",
@@ -629,7 +629,7 @@
                     "id": 402,
                     "title": "Why Choose Us",
                     "displayOrder": 2,
-                    "image": "./images/ServiceDetails.jpg",
+                    "image": "/images/ServiceDetails.jpg",
                     "items": [
                         {
                             "type": "0",
@@ -648,7 +648,7 @@
                     "id": 403,
                     "title": "Our Approach",
                     "displayOrder": 3,
-                    "image": "./images/ServiceDetails.jpg",
+                    "image": "/images/ServiceDetails.jpg",
                     "items": [
                         {
                             "type": "0",
@@ -691,7 +691,7 @@
                     "id": 404,
                     "title": "Integration & Automation Use Cases",
                     "displayOrder": 4,
-                    "image": "./images/ServiceDetails.jpg",
+                    "image": "/images/ServiceDetails.jpg",
                     "items": [
                         {
                             "type": "0",
@@ -729,7 +729,7 @@
                     "id": 405,
                     "title": "Technology Stack",
                     "displayOrder": 5,
-                    "image": "./images/ServiceDetails.jpg",
+                    "image": "/images/ServiceDetails.jpg",
                     "items": [
                         {
                             "type": "0",
@@ -772,7 +772,7 @@
                     "id": 406,
                     "title": "Industries We Support",
                     "displayOrder": 6,
-                    "image": "./images/ServiceDetails.jpg",
+                    "image": "/images/ServiceDetails.jpg",
                     "items": [
                         {
                             "type": "0",
