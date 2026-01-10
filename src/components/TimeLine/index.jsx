@@ -1,44 +1,95 @@
-import React from "react";
-import "./index.css"; // Add your custom styles if needed
+import { motion } from "framer-motion";
+import AnimatedGridBackground from "../AnimatedGridBackground";
 
 const approachSteps = [
   {
-    title: "1. Understand",
-    description: "We start by deeply understanding your business, challenges, and goals to align our AI solutions with your unique needs.",
+    step: "01",
+    title: "Discovery & Planning",
+    description:
+      "We begin with a deep understanding of your business goals, users, data flows, and technical constraints. This phase ensures clarity on scope, priorities, risks, and success metrics before any solution is designed."
   },
   {
-    title: "2. Ideate",
-    description: "Our team collaborates to brainstorm and architect the most efficient and innovative approach tailored for your business.",
+    step: "02",
+    title: "Architecture & Design",
+    description:
+      "Our architects design clean, scalable, and secure system architectures tailored to your needs. We focus on performance, reliability, security, and future scalability while selecting the right technologies and patterns."
   },
   {
-    title: "3. Develop",
-    description: "We bring the solution to life using cutting-edge technologies with a focus on scalability, security, and performance.",
+    step: "03",
+    title: "Agile Development",
+    description:
+      "We follow an iterative, agile delivery model with transparent milestones, rapid feedback cycles, and continuous improvement. This ensures flexibility, faster delivery, and alignment with evolving business needs."
   },
   {
-    title: "4. Deliver",
-    description: "We deploy, test, and deliver a solution that is production-ready, with continuous support and improvements as your needs evolve.",
+    step: "04",
+    title: "Testing & Security",
+    description:
+      "Quality and security are built into every layer. We apply automated testing, performance validation, and security best practices to ensure stability, compliance, and production readiness."
   },
+  {
+    step: "05",
+    title: "Deployment & Support",
+    description:
+      "We ensure smooth deployment with minimal disruption, followed by monitoring, optimization, and ongoing support. Our focus is long-term performance, reliability, and continuous improvement."
+  }
 ];
+
 
 function Timeline() {
   return (
-    <section className="py-2 px-3 bg-white">
-      <div className="container">
-        <h2 className="fs-1 fw-600 p-0 pt-2 m-0 mb-2 text-center">Our Approach</h2>
-        <p className="opacity-75 w-75 w-sm-100 mx-auto text-center">
-          A strategic and transparent approach to help your business grow with powerful AI solutions.
-        </p>
+    <section className="relative py-24 md:py-32 bg-bg-subtle overflow-hidden">
+      <AnimatedGridBackground />
+      <div className="container w-full md:w-4/5 mx-auto px-4 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-20"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Our Strategic Approach</h2>
+          <p className="text-text-muted text-lg max-w-2xl mx-auto">
+            A transparent, proven methodology designed to deliver exceptional results and sustainable growth.
+          </p>
+        </motion.div>
 
-        <div className="timeline position-relative">
-          {approachSteps.map((step, index) => (
-            <div className={`timeline-item ${index % 2 === 0 ? "left" : "right"}`} key={index}>
-              <div className="timeline-box shadow-sm p-3 text-center rounded bg-light timeline-card card">
-                <h5 className="fw-semibold">{step.title}</h5>
-                <p className="mb-0 text-muted small">{step.description}</p>
-              </div>
-            </div>
-          ))}
-          <div className="timeline-line"></div>
+        <div className="relative max-w-5xl mx-auto">
+          {/* Central Line */}
+          <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 h-full w-0.5 bg-linear-to-b from-primary/10 via-accent/50 to-primary/10"></div>
+
+          <div className="space-y-12 md:space-y-24">
+            {approachSteps.map((step, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className={`flex flex-col md:flex-row items-center gap-8 md:gap-0 ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
+              >
+
+                {/* Content Side */}
+                <div className="w-full md:w-1/2 md:px-12 pl-12">
+                  <div className="glass-card p-8 relative group hover:border-accent/30 transition-colors duration-500">
+                    <div className="absolute -top-6 -left-6 md:-top-8 md:-left-8 text-6xl md:text-8xl font-bold text-slate-100 -z-10 group-hover:text-accent/10 transition-colors duration-500 select-none">
+                      {step.step}
+                    </div>
+                    <h3 className="text-xl md:text-2xl font-bold text-primary mb-3 group-hover:text-accent transition-colors duration-300">
+                      {step.title}
+                    </h3>
+                    <p className="text-text-muted leading-relaxed group-hover:text-slate-600 transition-colors duration-300">
+                      {step.description}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Center Dot */}
+                <div className="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-bg-light rounded-full border-4 border-accent shadow-[0_0_0_4px_rgba(245,158,11,0.2)] z-10"></div>
+
+                {/* Empty Side */}
+                <div className="w-full md:w-1/2 hidden md:block"></div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

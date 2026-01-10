@@ -1,53 +1,49 @@
+// import { useState, useEffect } from 'react';
+// import { api } from '../../services/api';
+import servicesData from '../../data/services.json';
 import Card from "../../components/Card";
 import Hero from "../../components/Hero";
-import { Container } from "react-bootstrap";
 import Applications from "../../assets/s1.jpg";
 import Timeline from "../../components/TimeLine";
 import serviceimage from "../../assets/service.png";
-import AboutUS from "../../assets/aiaboutus.png"
+import Loader from "../../components/Loader";
 
 function Services() {
-
-    const cardData = [
-        { slug: "technology-advisory", title: "Technology Advisory", description: "Innovative AI solutions for your business." },
-        { slug: "cloud-consulting-and-migration", title: "Cloud Consulting and Migration", description: "Expert cloud solutions." },
-        { slug: "infrastructure-management", title: "Infrastructure Management", description: "Advanced data insights." },
-        { slug: "digital-modernization", title: "Digital Modernization", description: "Transform your business digitally." },
-        { slug: "managed-it-services", title: "Managed IT Services", description: "Enterprise-grade security." },
-        { slug: "ai-automation", title: "AI Automation", description: "Automate with intelligence." },
-    ]
+    // Load services from JSON directly
+    const services = servicesData.services.sort((a, b) => a.displayOrder - b.displayOrder);
 
     return (
-        <Container fluid className="px-0">
+        <div className="w-full overflow-x-hidden">
             <Hero
                 HeroImg={serviceimage}
                 HeroHeading="Technology Services and Solutions"
                 HeroText="We provide innovative solutions to help businesses thrive in the digital age."
                 buttonHeading="Contact Us"
             />
-            <br></br>
-            <br></br>
-            <Container>
-                <h3 class="fs-1 fw-600 p-0 pt-2 m-0 mb-2 text-center">Solutions You Can Trust</h3>
-                <p class="opacity-75 w-75 w-sm-100 mx-auto text-center">Trusted solutions for seamless business transformation</p>
-                <div class="d-flex flex-wrap justify-content-center gap-5 mt-5 mb-6 pb-5">
-                    {cardData.map((item, index) => (
-                        <Card
-                            key={index}
-                            CardImg={Applications}
-                            CardTitle={item.title}
-                            CardText={item.description}
-                            slug={item.slug}
-                        />
-                    ))}
+
+            <div className="py-20">
+                <div className="container w-full md:w-4/5 mx-auto px-4">
+                    <h3 className="text-4xl font-semibold text-center mb-4 text-primary">Solutions You Can Trust</h3>
+                    <p className="text-gray-500 text-lg text-center max-w-2xl mx-auto mb-16">Trusted solutions for seamless business transformation</p>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {services.map((item) => (
+                            <Card
+                                key={item.id}
+                                CardImg={item.heroImage || Applications}
+                                CardTitle={item.title}
+                                CardText={item.shortDescription}
+                                id={item.id}
+                            />
+                        ))}
+                    </div>
                 </div>
-            </Container>
-            <br></br>
-            <br></br>
-            <Timeline />
-            <br></br>
-            <br></br>
-        </Container>
+            </div>
+
+            <div className="py-20 bg-transparent">
+                <Timeline />
+            </div>
+        </div>
     );
 }
 

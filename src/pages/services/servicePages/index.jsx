@@ -1,93 +1,172 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import { Container } from 'react-bootstrap';
-import { IoMdArrowRoundBack } from "react-icons/io";
-import './index.css'
+import { motion } from 'framer-motion';
+import { FaCheckCircle } from 'react-icons/fa';
+import servicesData from '../../../data/services.json';
+
+const SectionImage = ({ src, alt }) => {
+  if (!src) return null;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.96 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+      className="w-full h-64 md:h-80 rounded-2xl overflow-hidden shadow-lg"
+    >
+      <img
+        src={src}
+        alt={alt}
+        className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
+      />
+    </motion.div>
+  );
+};
+
+
+
 function ServiceDetail() {
-    const navigate = useNavigate();
-    const { id } = useParams();
+  const navigate = useNavigate();
+  const { id } = useParams();
 
-    const data = [
-        {
-          slug: "technology-advisory",
-          title: "Technology Advisory",
-          description: `
-            Technology can drive your business forward or quietly drain resources if it’s not aligned with your goals. 
-            Our Technology Advisory service exists to ensure your tech strategy is a growth strategy. We go beyond surface-level 
-            recommendations and partner with you to make informed, forward-thinking decisions about how technology supports your operations, 
-            your customers, and your future.
-      
-            We start by understanding your business—where you are, where you’re headed, and what’s getting in the way. Then we dig into 
-            your current systems, infrastructure, software, and processes. We identify what’s working, what’s outdated, and what’s missing. 
-            Our approach is pragmatic: no hype, no fluff, just clear insights and a custom roadmap.
-      
-            We advise on IT budgeting, risk mitigation, vendor selection, tech stack optimization, and digital transformation strategies. 
-            Whether you're launching a new product, scaling operations, or recovering from a past misstep, our team helps you make the right calls. 
-            We also keep you ahead of the curve with insights into emerging technologies like AI, automation, and cloud innovations.
-      
-            But strategy alone isn’t enough. Execution matters. That’s why we work alongside your leadership and tech teams to implement plans, 
-            track KPIs, and pivot when needed. We help you build internal capabilities so you’re not dependent on outside consultants forever. 
-            We measure success not just by a solid plan—but by the business outcomes it drives: faster growth, fewer outages, better customer experiences, and higher ROI.
-      
-            When you're facing high-stakes decisions—acquisitions, infrastructure upgrades, new markets—we’re the partner you want in the room. 
-            Technology shouldn’t be a cost center. With the right guidance, it becomes your biggest lever for growth.
-          `
-        },
-        {
-          slug: "cloud-consulting-and-migration",
-          title: "Cloud Consulting",
-          description: "We help businesses plan, execute, and optimize their journey to the cloud—securely, efficiently, and without downtime."
-        },
-        {
-          slug: "infrastructure-management",
-          title: "Infrastructure Management",
-          description: "We keep your systems reliable, scalable, and secure with proactive monitoring, performance tuning, and 24/7 support."
-        },
-        {
-          slug: "managed-it-services",
-          title: "Managed IT Services",
-          description: "Comprehensive IT support—from helpdesk to cybersecurity—so you can focus on your business while we handle the tech."
-        },
-        {
-          slug: "ai-automation",
-          title: "AI Automation",
-          description: "We implement AI-driven solutions and automation tools that streamline operations, reduce costs, and boost productivity."
-        },
-        {
-          slug: "digital-modernization",
-          title: "Digital Modernization",
-          description: "We upgrade legacy systems and implement modern, cloud-native solutions to future-proof your operations."
-        }
-      ];
-      
+  // Find service by ID from the JSON data
+  const service = servicesData.services.find(s => s.id.toString() === id);
 
-    const selectedService = data.find(service => service.slug === id);
-
-    if (!selectedService) {
-        return (
-            <Container className="py-5">
-                <p onClick={() => navigate(-1)} style={{ cursor: 'pointer', color: 'blue' }}>
-                    ← Back to Services
-                </p>
-                <h2>Service Not Found</h2>
-            </Container>
-        );
-    }
-
+  if (!service) {
     return (
-        <Container fluid className="px-0">
-            <div className='servicePageHeader'>
-                <Container py={5} className="text-center">
-                    <h3 className="fs-1 fw-600 p-0 pt-2 m-0 mb-2 text-center"> {selectedService.title}</h3>
-                    <p className="opacity-75 w-75 w-sm-100 mx-auto text-center">Trusted solutions for seamless business transformation</p>
-                </Container>
+      <div className="py-24 container w-full md:w-4/5 mx-auto px-4 text-center">
+        <h2 className="text-3xl font-bold text-gray-800 mb-4">Service Not Found</h2>
+        <p className="text-gray-600 mb-8">The requested service could not be found.</p>
+        <button
+          onClick={() => navigate('/services')}
+          className="text-primary hover:underline font-medium"
+        >
+          ← Back to Services
+        </button>
+      </div>
+    );
+  }
+
+  const renderItem = (item) => {
+    switch (item.type) {
+      case "0": // Text
+        return <p key={item.displayOrder} className="text-gray-600 mb-4 leading-relaxed">{item.content}</p>;
+      case "1": // BulletPoint
+        return (
+          <div key={item.displayOrder} className="flex items-start gap-3 mb-3">
+            <FaCheckCircle className="text-accent mt-1 shrink-0" />
+            <span className="text-gray-700">{item.content}</span>
+          </div>
+        );
+      case "2": // HeadingWithText
+        return (
+          <div key={item.displayOrder} className="mb-6">
+            <h3 className="text-xl font-semibold text-gray-800 mb-2">{item.heading}</h3>
+            <p className="text-gray-600 leading-relaxed">{item.content}</p>
+          </div>
+        );
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <div className="w-full">
+      {/* Modern Hero Section */}
+      <div className="relative bg-primary text-white pt-40 pb-24 overflow-hidden">
+        <div className="container px-4 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className=" w-full md:w-4/5 mx-auto text-start"
+          >
+            {/* Breadcrumbs */}
+            <div className="flex flex-wrap justify-start items-center gap-2 text-blue-200 mb-6 text-sm font-medium">
+              <button onClick={() => navigate('/')} className="hover:text-white transition-colors">Home</button>
+              <span>/</span>
+              <button onClick={() => navigate('/services')} className="hover:text-white transition-colors">Services</button>
+              <span>/</span>
+              <span className="text-white">{service.title}</span>
             </div>
 
-            <Container className='py-5'>
-            <p style={{ textAlign: 'justify', padding: "3px" }}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{selectedService.description}</p>
-            </Container>
-            
-        </Container>
-    );
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">{service.title}</h1>
+            <p className="text-xl md:text-2xl text-blue-100 font-light">{service.shortDescription}</p>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Content Section */}
+      <div className="py-24 bg-white">
+        <div className="container w-full md:w-4/5 mx-auto px-4">
+          <div className="flex flex-col gap-16">
+
+            {/* Main Description */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="w-full"
+            >
+              <h2 className="text-3xl font-bold text-gray-800 mb-8 relative inline-block">
+                Overview
+                <span className="absolute bottom-0 left-0 w-1/2 h-1 bg-accent rounded-full"></span>
+              </h2>
+              <div className="prose prose-lg text-gray-600 leading-relaxed whitespace-pre-line text-justify max-w-none mb-12">
+                {service.description}
+              </div>
+
+              {/* Sections rendering */}
+              {service.sections
+                .sort((a, b) => a.displayOrder - b.displayOrder)
+                .map((section) => (
+                  <motion.section
+                    key={section.id}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                    className="mb-20"
+                  >
+                    {/* Section Title */}
+                    <div className="mb-8">
+                      <h2 className="text-3xl font-bold text-gray-800 relative inline-block">
+                        {section.title}
+                        <span className="absolute bottom-0 left-0 w-1/2 h-1 bg-accent rounded-full"></span>
+                      </h2>
+                    </div>
+
+                    {/* Content Layout */}
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                      {/* Text Content */}
+                      <div className="space-y-4">
+                        {section.items
+                          ?.sort((a, b) => a.displayOrder - b.displayOrder)
+                          .map((item) => renderItem(item))}
+                      </div>
+
+                      {/* Single Image */}
+                      {section.image && (
+                        <SectionImage
+                          src={section.image}
+                          alt={section.title}
+                        />
+                      )}
+                    </div>
+                  </motion.section>
+                ))}
+
+
+
+            </motion.div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  );
 }
 
 export default ServiceDetail;
