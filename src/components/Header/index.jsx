@@ -53,7 +53,7 @@ const Header = () => {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
-            <img src={logo} alt="AIZero Logo" className="h-[50px] md:h-[60px] w-auto" />
+            <img src={logo} alt="Aizero Logo" className="h-[50px] md:h-[60px] w-auto" />
           </div>
 
           {/* Desktop Navigation */}
@@ -138,7 +138,7 @@ const Header = () => {
           <div className={`fixed top-0 right-0 h-full w-[80%] max-w-sm bg-white shadow-2xl z-102 transform transition-transform duration-300 ease-out ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
             <div className="p-6 flex flex-col h-full">
               <div className="flex justify-between items-center mb-8">
-                <img src={logo} alt="AIZero Logo" className="h-8 w-auto" />
+                <img src={logo} alt="Aizero Logo" className="h-8 w-auto" />
                 <button onClick={() => setIsOpen(false)} className="text-gray-500 hover:text-primary">
                   <HiX size={28} />
                 </button>

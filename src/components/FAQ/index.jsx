@@ -11,11 +11,11 @@ const FAQ = () => {
 
   const faqData = [
     {
-      question: "What services does AIZero provide?",
-      answer: "AIZero offers a range of services including Technology Advisory, Cloud Consulting, Infrastructure Management, Digital Modernization, and AI Automation solutions tailored to your business needs."
+      question: "What services does Aizero provide?",
+      answer: "Aizero offers a range of services including Technology Advisory, Cloud Consulting, Infrastructure Management, Digital Modernization, and AI Automation solutions tailored to your business needs."
     },
     {
-      question: "How can AIZero help my business grow?",
+      question: "How can Aizero help my business grow?",
       answer: "We leverage cutting-edge technology and AI to optimize your operations, enhance decision-making, and create scalable solutions that drive efficiency and growth."
     },
     {
@@ -23,7 +23,7 @@ const FAQ = () => {
       answer: "Yes, we provide comprehensive post-project support and managed IT services to ensure your systems run smoothly and evolve with your business."
     },
     {
-      question: "How do I get started with AIZero?",
+      question: "How do I get started with Aizero?",
       answer: "Simply contact us through our website or email. We'll schedule a consultation to understand your requirements and propose a tailored strategy."
     }
   ];

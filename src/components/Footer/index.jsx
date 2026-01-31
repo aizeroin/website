@@ -82,13 +82,13 @@ const Footer = ({ hidebutto = false }) => {
             <div>
               <h5 className="text-lg font-bold text-gray-800 mb-6">Contact Us</h5>
               <div className="space-y-4">
-                <div>
-                  <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-1">Main Office</p>
-                  <p className="text-gray-700">24, IT Layout, Bellandur<br />Bengalore-02, India</p>
+                 <div>
+                  <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-1">USA Office</p>
+                  <p className="text-gray-700">525 New Jersey-73, STE 104<br />MARLTON, New Jersey-08053</p>
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-1">Branch Office</p>
-                  <p className="text-gray-700">525 New Jersey-73, STE 104<br />MARLTON, New Jersey-08053</p>
+                  <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-1">India Office</p>
+                  <p className="text-gray-700">24, IT Layout, Bellandur<br />Bengalore-02, India</p>
                 </div>
               </div>
             </div>
@@ -103,14 +103,14 @@ const Footer = ({ hidebutto = false }) => {
                 href="mailto:aizero@gmail.com"
                 className="inline-flex items-center justify-center px-6 py-3 border border-gray-300 rounded-lg text-primary font-medium hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 w-full md:w-auto"
               >
-                aizero@gmail.com
+               info@aizero.io
               </a>
             </div>
 
           </div>
 
           <div className="border-t border-gray-200 pt-4 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-gray-500 text-sm">© 2025 AIZero. All Rights Reserved.</p>
+            <p className="text-gray-500 text-sm">© {new Date().getFullYear()} Aizero. All Rights Reserved.</p>
             <div className="flex gap-6 text-sm text-gray-500">
               <Link to="/privacy" className="hover:text-primary">Privacy Policy</Link>
               <Link to="/terms" className="hover:text-primary">Terms of Service</Link>

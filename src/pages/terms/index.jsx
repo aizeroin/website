@@ -17,7 +17,7 @@ function TermsOfService() {
 
                         <h3 className="text-2xl font-bold text-gray-800 mb-4">1. Agreement to Terms</h3>
                         <p className="mb-6">
-                            These Terms of Service constitute a legally binding agreement made between you, whether personally or on behalf of an entity (“you”) and AIZero (“we,” “us” or “our”), concerning your access to and use of the AIZero website as well as any other media form, media channel, mobile website or mobile application related, linked, or otherwise connected thereto (collectively, the “Site”).
+                            These Terms of Service constitute a legally binding agreement made between you, whether personally or on behalf of an entity (“you”) and Aizero (“we,” “us” or “our”), concerning your access to and use of the Aizero website as well as any other media form, media channel, mobile website or mobile application related, linked, or otherwise connected thereto (collectively, the “Site”).
                         </p>
 
                         <h3 className="text-2xl font-bold text-gray-800 mb-4">2. Intellectual Property Rights</h3>

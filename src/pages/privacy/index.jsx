@@ -17,7 +17,7 @@ function PrivacyPolicy() {
 
                         <h3 className="text-2xl font-bold text-gray-800 mb-4">1. Introduction</h3>
                         <p className="mb-6">
-                            Welcome to AIZero. We respect your privacy and are committed to protecting your personal data.
+                            Welcome to Aizero. We respect your privacy and are committed to protecting your personal data.
                             This privacy policy will inform you as to how we look after your personal data when you visit our website
                             (regardless of where you visit it from) and tell you about your privacy rights and how the law protects you.
                         </p>

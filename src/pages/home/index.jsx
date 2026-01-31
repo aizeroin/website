@@ -27,7 +27,7 @@ function Home() {
 
       {/* <MasonryGrid /> */}
 
-      {/* Why AIZero Section */}
+      {/* Why Aizero Section */}
       <div className="py-24 md:pt-36 bg-white">
         <div className="container w-full md:w-4/5 mx-auto px-4">
           <div className="flex flex-col lg:flex-row items-center gap-16">
@@ -39,7 +39,7 @@ function Home() {
               transition={{ duration: 0.8 }}
               className="w-full lg:w-1/2"
             >
-              <h3 className="text-4xl font-bold text-primary mb-6">Why AIZero?</h3>
+              <h3 className="text-4xl font-bold text-primary mb-6">Why Aizero?</h3>
               <p className="text-text-muted text-lg leading-relaxed mb-6 text-justify">
                 We are a fast-growing team of highly skilled, passionate IT professionals with excellence in service delivery, enabling faster innovation and higher productivity.
               </p>
@@ -66,7 +66,7 @@ function Home() {
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <img
                   src={ProfileImage}
-                  alt="Why AIZero Team"
+                  alt="Why Aizero Team"
                   className="w-full h-auto object-cover hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-primary/10 hover:bg-transparent transition-colors duration-300"></div>

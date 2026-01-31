@@ -118,7 +118,7 @@ function Contact() {
                                         </div>
                                         <div>
                                             <h4 className="text-lg font-bold text-primary mb-1">Email Us</h4>
-                                            <p className="text-text-muted">contact@aizero.com</p>
+                                            <p className="text-text-muted">contact@aizero.io</p>
                                         </div>
                                     </div>
                                 </div>
