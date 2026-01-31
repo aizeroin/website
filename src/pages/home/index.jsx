@@ -1,5 +1,4 @@
 import Hero from "../../components/Hero"
-import HeroImage from "../../assets/hero-img.png";
 import AIZlogo from "../../assets/AIZLogo.png"
 import ProfileImage from "../../assets/profile.jpg";
 import Stats from "../../components/Stats";

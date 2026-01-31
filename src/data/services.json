@@ -4,13 +4,14 @@
             "id": "1",
             "title": "Cloud Migration & Modernization Services",
             "shortDescription": "Secure, scalable cloud transformation",
+            "heroImage": "images/cloudService3.png",
             "description": "Accelerate your digital transformation by moving applications, data, and infrastructure to the cloud securely and efficiently. Our Cloud Migration & Modernization services help organizations reduce costs, improve scalability, modernize legacy systems, and build future-ready platforms for long-term growth.",
             "sections": [
                 {
                     "id": 101,
                     "title": "What We Do",
                     "displayOrder": 1,
-                    "image": "/images/ServiceDetails.jpg",
+                    "image": "images/cloudService1.png",
                     "items": [
                         {
                             "type": "0",
@@ -38,7 +39,7 @@
                     "id": 102,
                     "title": "Cloud Modernization Services",
                     "displayOrder": 2,
-                    "image": "/images/ServiceDetails.jpg",
+                    "image": "",
                     "items": [
                         {
                             "type": "0",
@@ -81,7 +82,7 @@
                     "id": 103,
                     "title": "Why Choose Us",
                     "displayOrder": 3,
-                    "image": "/images/ServiceDetails.jpg",
+                    "image": "images/cloudService3.png",
                     "items": [
                         {
                             "type": "0",
@@ -112,7 +113,7 @@
                     "id": 104,
                     "title": "Industries We Serve",
                     "displayOrder": 4,
-                    "image": "/images/ServiceDetails.jpg",
+                    "image": "",
                     "items": [
                         {
                             "type": "0",
@@ -175,7 +176,7 @@
                     "id": 201,
                     "title": "What We Do",
                     "displayOrder": 1,
-                    "image": "/images/ServiceDetails.jpg",
+                    "image": "images/Enterprise2.png",
                     "items": [
                         {
                             "type": "0",
@@ -208,7 +209,7 @@
                     "id": 202,
                     "title": "Our Approach",
                     "displayOrder": 2,
-                    "image": "/images/ServiceDetails.jpg",
+                    "image": "",
                     "items": [
                         {
                             "type": "0",
@@ -241,7 +242,7 @@
                     "id": 203,
                     "title": "Technology Stack",
                     "displayOrder": 3,
-                    "image": "/images/ServiceDetails.jpg",
+                    "image": "images/Enterprise3.png",
                     "items": [
                         {
                             "type": "0",
@@ -274,7 +275,7 @@
                     "id": 204,
                     "title": "Why Choose Us",
                     "displayOrder": 4,
-                    "image": "/images/ServiceDetails.jpg",
+                    "image": "",
                     "items": [
                         {
                             "type": "0",
@@ -299,7 +300,7 @@
                     "id": 205,
                     "title": "Industries We Serve",
                     "displayOrder": 5,
-                    "image": "/images/ServiceDetails.jpg",
+                    "image": "images/Enterprise1.png",
                     "items": [
                         {
                             "type": "0",
@@ -356,13 +357,14 @@
             "id": "3",
             "title": "Financial Services & Capital Investments Consulting",
             "shortDescription": "High-performance financial platforms",
+            "heroImage": "images/Finance3.png",
             "description": "We help financial institutions modernize trading, portfolio, and risk platforms while delivering secure, compliant, and high-performance systems.",
             "sections": [
                 {
                     "id": 301,
                     "title": "What We Do",
                     "displayOrder": 1,
-                    "image": "/images/ServiceDetails.jpg",
+                    "image": "images/Finance1.png",
                     "items": [
                         {
                             "type": "0",
@@ -400,7 +402,7 @@
                     "id": 302,
                     "title": "Business Benefits",
                     "displayOrder": 2,
-                    "image": "/images/ServiceDetails.jpg",
+                    "image": "",
                     "items": [
                         {
                             "type": "0",
@@ -431,7 +433,7 @@
                     "id": 303,
                     "title": "Our Approach",
                     "displayOrder": 3,
-                    "image": "/images/ServiceDetails.jpg",
+                    "image": "images/Finance3.png",
                     "items": [
                         {
                             "type": "0",
@@ -462,7 +464,7 @@
                     "id": 304,
                     "title": "Why Financial Institutions Choose Us",
                     "displayOrder": 4,
-                    "image": "/images/ServiceDetails.jpg",
+                    "image": "",
                     "items": [
                         {
                             "type": "0",
@@ -495,7 +497,7 @@
                     "id": 305,
                     "title": "Technology Stack",
                     "displayOrder": 5,
-                    "image": "/images/ServiceDetails.jpg",
+                    "image": "",
                     "items": [
                         {
                             "type": "0",
@@ -538,7 +540,7 @@
                     "id": 306,
                     "title": "Industries We Serve",
                     "displayOrder": 6,
-                    "image": "/images/ServiceDetails.jpg",
+                    "image": "images/Finance4.jpg",
                     "items": [
                         {
                             "type": "0",
@@ -595,13 +597,14 @@
             "id": "4",
             "title": "Integration & Automation Services",
             "shortDescription": "Connected and automated operations",
+            "heroImage": "images/Automation3.jpg",
             "description": "We eliminate silos and manual effort by integrating systems and automating workflows across your enterprise technology ecosystem.",
             "sections": [
                 {
                     "id": 401,
                     "title": "What We Do",
                     "displayOrder": 1,
-                    "image": "/images/ServiceDetails.jpg",
+                    "image": "images/Automation5.jpg",
                     "items": [
                         {
                             "type": "0",
@@ -629,7 +632,7 @@
                     "id": 402,
                     "title": "Why Choose Us",
                     "displayOrder": 2,
-                    "image": "/images/ServiceDetails.jpg",
+                    "image": "",
                     "items": [
                         {
                             "type": "0",
@@ -648,7 +651,7 @@
                     "id": 403,
                     "title": "Our Approach",
                     "displayOrder": 3,
-                    "image": "/images/ServiceDetails.jpg",
+                    "image": "images/Automation3.jpg",
                     "items": [
                         {
                             "type": "0",
@@ -691,7 +694,7 @@
                     "id": 404,
                     "title": "Integration & Automation Use Cases",
                     "displayOrder": 4,
-                    "image": "/images/ServiceDetails.jpg",
+                    "image": "",
                     "items": [
                         {
                             "type": "0",
@@ -729,7 +732,7 @@
                     "id": 405,
                     "title": "Technology Stack",
                     "displayOrder": 5,
-                    "image": "/images/ServiceDetails.jpg",
+                    "image": "images/Automation2.jpg",
                     "items": [
                         {
                             "type": "0",
@@ -772,7 +775,7 @@
                     "id": 406,
                     "title": "Industries We Support",
                     "displayOrder": 6,
-                    "image": "/images/ServiceDetails.jpg",
+                    "image": "",
                     "items": [
                         {
                             "type": "0",
